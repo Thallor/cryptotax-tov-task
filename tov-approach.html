@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Koinly tone of voice — practical task | James Edwards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --link:#335EEA; --link-dk:#2247C4;
+  --blue-600:#2563EB;
+  --sky-100:#E0F2FE; --sky-50:#F0F9FF;
+  --green-50:#F0FDF4; --green-600:#16A34A;
+  --amber-50:#FFFBEB; --amber-500:#F59E0B;
+  --gray-200:#E5E7EB; --gray-100:#F3F4F6; --gray-50:#F9FAFB;
+  --ink:#111827; --body:#374151; --muted:#6B7280;
+  --xl:1140px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:#fff;color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;color:var(--ink);letter-spacing:-0.022em;line-height:1.2}
+p{margin:0 0 16px}
+p:last-child{margin-bottom:0}
+a{color:var(--link);text-decoration:none}
+ul{margin:0 0 16px;padding:0;list-style:none}
+.container{max-width:var(--xl);margin:0 auto;padding:0 24px}
+.narrow{max-width:780px}
+
+/* ---------- masthead ---------- */
+.masthead{background:linear-gradient(180deg,var(--sky-50) 0%,#fff 100%);border-bottom:1px solid var(--gray-200);padding:64px 0 52px}
+.eyebrow{display:inline-block;background:var(--link);color:#fff;font-size:12.5px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:22px}
+.masthead h1{font-size:50px;font-weight:800;margin-bottom:18px;max-width:16em}
+.masthead .standfirst{font-size:20px;color:var(--body);max-width:44em}
+.byline{margin-top:30px;padding-top:22px;border-top:1px solid var(--gray-200);
+  display:flex;gap:28px;flex-wrap:wrap;font-size:14.5px;color:var(--muted)}
+.byline b{color:var(--ink);font-weight:650}
+
+/* ---------- toc ---------- */
+.toc{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--gray-200)}
+.toc-in{display:flex;gap:6px;overflow-x:auto;padding:11px 24px;max-width:var(--xl);margin:0 auto}
+.toc a{white-space:nowrap;font-size:14.5px;font-weight:550;color:var(--muted);padding:7px 13px;border-radius:7px}
+.toc a:hover{background:var(--gray-100);color:var(--ink)}
+
+/* ---------- sections ---------- */
+section{padding:64px 0;border-bottom:1px solid var(--gray-200)}
+section:last-of-type{border-bottom:0}
+.sec-num{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--link);margin-bottom:12px}
+h2{font-size:38px;font-weight:800;margin-bottom:26px}
+h3{font-size:25px;font-weight:700;margin:44px 0 14px}
+h3:first-of-type{margin-top:0}
+h4{font-size:18px;font-weight:700;margin:0 0 8px}
+
+/* ---------- ticks ---------- */
+ul.ticks li{display:flex;align-items:flex-start;margin-bottom:13px}
+.tick{flex:0 0 auto;background:var(--green-50);color:var(--green-600);border-radius:999px;
+  margin-right:14px;padding:1px 7px;font-size:13px;font-weight:800;line-height:1.6}
+ul.ticks p{margin:0}
+
+/* ---------- bullets ---------- */
+ul.dots li{position:relative;padding-left:22px;margin-bottom:11px}
+ul.dots li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;border-radius:50%;background:var(--link)}
+
+/* ---------- callout ---------- */
+.callout{background:var(--sky-100);border-left:4px solid var(--link);border-radius:8px;padding:20px 24px;margin:26px 0}
+.callout h4{margin-bottom:6px}
+.callout p{color:#1F3A6E}
+.callout.amber{background:var(--amber-50);border-left-color:var(--amber-500)}
+.callout.amber p{color:#78430A}
+
+/* ---------- pull quote ---------- */
+.pull{margin:40px 0;padding:30px 0 30px 30px;border-left:5px solid var(--link)}
+.pull p{font-size:26px;line-height:1.4;font-weight:650;color:var(--ink);letter-spacing:-0.02em;margin:0}
+.pull cite{display:block;margin-top:14px;font-size:15px;font-style:normal;color:var(--muted)}
+
+/* ---------- compare table ---------- */
+.table-wide{width:min(1040px, calc(100vw - 48px));margin-left:50%;transform:translateX(-50%)}
+.compare{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0;margin:26px 0;font-size:16px;
+  border:1px solid var(--gray-200);border-radius:10px;overflow:hidden}
+.compare col.label{width:18%}
+.compare col.half{width:41%}
+.compare th,.compare td{padding:15px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--gray-200);
+  border-right:1px solid var(--gray-200)}
+.compare th:last-child,.compare td:last-child{border-right:0}
+.compare thead th{background:var(--gray-50);font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.compare tbody tr:last-child td{border-bottom:0}
+.compare td:first-child{font-weight:650;color:var(--ink)}
+.compare td+td{color:var(--body)}
+
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:28px 0}
+.card{border:1px solid var(--gray-200);border-radius:12px;padding:24px;background:#fff}
+.card .n{width:34px;height:34px;border-radius:999px;background:var(--link);color:#fff;
+  display:grid;place-items:center;font-size:15px;font-weight:800;margin-bottom:14px}
+.card h4{font-size:17.5px;margin-bottom:8px}
+.card p{font-size:15.5px;color:var(--body);margin:0}
+.two{grid-template-columns:repeat(2,1fr)}
+
+/* ---------- applied blocks ---------- */
+.applied{border:1px solid var(--gray-200);border-radius:12px;overflow:hidden;margin:24px 0}
+.applied-h{background:var(--gray-50);border-bottom:1px solid var(--gray-200);padding:16px 22px;font-weight:700;color:var(--ink);font-size:18px}
+.applied-b{padding:20px 22px}
+.applied-b p{font-size:16.5px}
+
+/* ---------- principles ---------- */
+.principles{counter-reset:pr;margin-top:30px}
+.principle{display:grid;grid-template-columns:56px 1fr;gap:22px;padding:24px 0;border-bottom:1px solid var(--gray-200)}
+.principle:last-child{border-bottom:0}
+.principle .pn{width:44px;height:44px;border-radius:11px;background:var(--sky-100);color:var(--link-dk);
+  display:grid;place-items:center;font-size:18px;font-weight:800}
+.principle h4{font-size:20px;margin-bottom:7px}
+.principle p{font-size:16.5px;margin:0}
+
+/* ---------- footer ---------- */
+footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40px 0;font-size:14.5px;color:var(--muted);text-align:center}
+
+@media (max-width:900px){
+  .masthead{padding:44px 0 36px}
+  .masthead h1{font-size:33px}
+  h2{font-size:28px}h3{font-size:21px}
+  .cards,.cards.two{grid-template-columns:1fr}
+  .pull p{font-size:21px}
+  .principle{grid-template-columns:1fr;gap:12px}
+  .table-wide{width:100%;margin-left:0;transform:none}
+  .compare{table-layout:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="container">
+    <span class="eyebrow">Practical task &middot; Section 1</span>
+    <h1>Building a tone of voice for Koinly, using Wise as a reference</h1>
+    <p class="standfirst">The following page is intended to take you through my thought process, and how I approached merging Wise&rsquo;s tone of voice with Koinly&rsquo;s.</p>
+    <div class="byline">
+      <span><b>James Edwards</b></span>
+      <span>Explain your TOV approach</span>
+      <span>Koinly &middot; Content Lead</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-in">
+    <a href="#wise">Wise&rsquo;s TOV</a>
+    <a href="#marketing">Marketing voice</a>
+    <a href="#inapp">In-app voice</a>
+    <a href="#change">What changes for Koinly</a>
+    <a href="#take">What we take from Wise</a>
+    <a href="#tov">The Koinly TOV</a>
+  </div>
+</nav>
+
+<!-- ============================================= -->
+<section id="wise">
+  <div class="container narrow">
+    <div class="sec-num">01</div>
+    <h2>Wise&rsquo;s tone of voice</h2>
+
+    <p>Given that Koinly identifies both Wise and Stripe as reference points, I started by identifying the commonalities between the two brands &mdash; though I found this challenging in some ways, as the two brands&rsquo; identities are quite different and the overlap has reduced.</p>
+
+    <h3>Wise and Stripe prioritise reliability over technical prowess</h3>
+    <p>Both Wise and Stripe have cutting-edge technology under the hood, but that isn&rsquo;t what they use as a selling point.</p>
+    <p>Instead, they are focused on &lsquo;it just works&rsquo; messaging that turns a complicated and expensive backend process into a reliable and affordable experience.</p>
+    <p>They both avoid hyperbole, which ensures their claims are substantiated by the in-app experience, and keeps them on the right side of regulators across the globe.</p>
+
+    <div class="callout">
+      <h4>An important early distinction</h4>
+      <p>Since rebranding, the voice Wise uses in marketing has diverged significantly from Stripe. However, in-app communications remain similar. This felt important to identify early on.</p>
+    </div>
+
+    <h3>Wise utilises a single tone of voice, with two distinct modes</h3>
+    <p>The first thing I noticed is that Wise uses two distinctly different settings for its brand voice.</p>
+    <ul class="ticks">
+      <li><span class="tick">1</span><p><b>Marketing material</b> is in line with the personality described in the article &ndash; bold, energetic, and full of life &ndash; and relies heavily on visual assets to deliver the TOV to its fullest extent.</p></li>
+      <li><span class="tick">2</span><p><b>In-app communications</b> dial the personality right down, and rely on prescriptive and concise messaging for the bulk of app copy.</p></li>
+    </ul>
+    <p>Let&rsquo;s take a closer look at the marketing TOV. This seems most relevant to the Content Lead role, and the next section of this assessment.</p>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section id="marketing">
+  <div class="container narrow">
+    <div class="sec-num">02</div>
+    <h2>Wise&rsquo;s marketing tone of voice</h2>
+
+    <ul class="dots">
+      <li>Leans heavily on everyday, tangible moments and casual language that is borderline colloquial at times.</li>
+      <li>Makes a purely digital product feel organic and tangible &ndash; human and approachable, rather than mechanical or technical.</li>
+      <li>Focuses on solving user needs, rather than fluffing the product or brand itself.</li>
+      <li>Makes finances feel calm and relaxed, rather than serious and clinical.</li>
+      <li>Uses proactive messaging to inform users what&rsquo;s happening next, before they need to go looking for information.</li>
+    </ul>
+
+    <h3>The voice is inseparable from the visual design</h3>
+    <p>A cornerstone of Wise&rsquo;s TOV is how intimately it&rsquo;s linked with the visual branding and design.</p>
+    <p>Many of the visual assets used by Wise aren&rsquo;t illustrations, b-roll or product shots &mdash; instead they are simply images of hero text. And where additional assets are used, they are typically:</p>
+    <ul class="dots">
+      <li><b>Minimalist illustrations</b> that amplify the message in the text.</li>
+      <li><b>Candid photography of real people</b>, that makes the digital product feel organic, warm and tangible.</li>
+    </ul>
+
+    <p>This helps amplify the written copy and provides a number of other benefits:</p>
+    <ul class="ticks">
+      <li><span class="tick">&#10003;</span><p>Leans into &ldquo;show don&rsquo;t tell&rdquo; with simple visual designs and icons.</p></li>
+      <li><span class="tick">&#10003;</span><p>The organic design theme brings the digital product to life.</p></li>
+      <li><span class="tick">&#10003;</span><p>Multicultural-inspired designs help make the product feel universal.</p></li>
+      <li><span class="tick">&#10003;</span><p>Candid product shots make a digital product feel tangible.</p></li>
+    </ul>
+
+    <h3>A balance between minimalism and maximalism</h3>
+    <div class="cards two">
+      <div class="card">
+        <h4>Minimalist</h4>
+        <p>Images typically have a singular focus: hero text, or a photo of a person. When hero text is accompanied by illustrations, the design remains minimal. This prevents an image ever getting too noisy.</p>
+      </div>
+      <div class="card">
+        <h4>Maximalist</h4>
+        <p>The images themselves are bright, energetic and capture attention. But they never become overbearing, since there&rsquo;s only ever 1&ndash;2 assets in the image.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section id="inapp">
+  <div class="container narrow">
+    <div class="sec-num">03</div>
+    <h2>Wise&rsquo;s in-app tone of voice</h2>
+
+    <p>The next thing I&rsquo;d like to note is where the personality stops. The in-app messaging diverges from the bold personality used in marketing, and switches to a prescriptive, concise tone familiar to modern fintech products like Stripe.</p>
+
+    <p>As a daily user of Wise, I was actually surprised when I read the blog by their design team. This is because so little of the personality makes it through to the app.</p>
+
+    <p>So immediately I knew that there were two modes of communication being used, which I thought was the correct decision.</p>
+
+    <div class="callout">
+      <p>When writing in-app copy for a financial product, you simply cannot afford to be anything less than direct. So I was glad to see this distinction in the wild, and made sure it would be a cornerstone of my approach to Koinly&rsquo;s updated TOV.</p>
+    </div>
+
+    <p>The in-app tone of voice doesn&rsquo;t need much exposition &ndash; it&rsquo;s very concise, prescriptive and straight to the point. Similar to that used by Stripe, Koinly, and many fintech products that we&rsquo;re all familiar with.</p>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section id="change">
+  <div class="container narrow">
+    <div class="sec-num">04</div>
+    <h2>How Wise&rsquo;s tone of voice needs to change for Koinly</h2>
+
+    <p>Truthfully, I&rsquo;m not sure Wise is the absolute best product for Koinly to emulate. However, there are definitely some elements of their TOV and wider approach that I think would be good to apply to Koinly. But first, I wanted to unpack my reasoning before showing how I&rsquo;d merge the two.</p>
+
+    <h3>Different industry, different regulators, different stakes</h3>
+
+    <div class="table-wide">
+    <table class="compare">
+      <colgroup><col class="label"><col class="half"><col class="half"></colgroup>
+      <thead>
+        <tr><th></th><th>Wise</th><th>Koinly</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The job</td>
+          <td>Everyday spending, and moving money between foreign currencies and accounts.</td>
+          <td>Producing an accurate tax report from an incomplete, fragmented transaction history.</td>
+        </tr>
+        <tr>
+          <td>The stakes</td>
+          <td>Relatively low. It&rsquo;s unlikely users are scrutinising every transaction &mdash; if the name of the point-of-sale doesn&rsquo;t exactly match what they were thinking, they&rsquo;re unlikely to follow up on it.</td>
+          <td>High. A single, relatively minor-looking discrepancy in one transaction from several years ago can render an entire 10,000-transaction report invalid.</td>
+        </tr>
+        <tr>
+          <td>The user</td>
+          <td>A large part of Wise&rsquo;s users are holidaymakers, primed to interact with more &ldquo;bold, energetic and full of life&rdquo; messaging than they might be with other financial products.</td>
+          <td>Users typically have to scrutinise transactions and find missing data sources, which can involve manually combing through the blockchain or exchange records.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>Wise&rsquo;s primary value proposition is that it moves money much more cheaply than traditional systems and banks &ndash; which is true. So it offers a feel-good proposition up front, and follows through with it using an uncomplicated and easy-to-use interface.</p>
+    <p>For Koinly users, the opposite is true. Crypto tax software &ndash; Koinly included &ndash; is rarely 100% accurate and data-complete on the first pass.</p>
+
+    <h3>Koinly is a high-stakes product with serious financial consequences</h3>
+    <p>Koinly users rely on the product&rsquo;s accuracy to give them a reliable tax report.</p>
+    <p>This tax report then affects how much money they will have to pay their tax authority. The reliability of the report may also influence whether or not they get flagged for an audit.</p>
+    <p>These are both very serious outcomes that can have a large financial impact on the user. If the brand messaging is even just slightly confusing, misleading or unclear, then it could have a very serious impact on them.</p>
+
+    <div class="callout">
+      <h4>The core constraint</h4>
+      <p>Koinly does not have the luxury of using Wise&rsquo;s casual and colloquial language. Its messaging needs to reflect the quality of its product &ndash; precise and reliable.</p>
+    </div>
+
+    <p>Furthermore, emotions can get high when doing your crypto tax &ndash; I&rsquo;m speaking from experience. There can be a lot of stress, tension, confusion and frustration involved. Especially if you&rsquo;ve used multiple blockchains, wallets and DeFi.</p>
+    <p>So Koinly doesn&rsquo;t have the luxury of being quite as fun and light-hearted as Wise.</p>
+    <p><b>But where does this leave us?</b></p>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section id="take">
+  <div class="container narrow">
+    <div class="sec-num">05</div>
+    <h2>What Koinly can take from Wise</h2>
+
+    <p>I think what&rsquo;s applicable from Wise&rsquo;s TOV, as applied to Koinly, can be distilled into three leading principles:</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="n">1</div>
+        <h4>Empathising with the user</h4>
+        <p>Wise&rsquo;s core USP of helping users avoid high fees from legacy institutions is inherently empathetic, and supported by the familiarity it builds with casual language and design themes.</p>
+      </div>
+      <div class="card">
+        <div class="n">2</div>
+        <h4>Humanising a digital product</h4>
+        <p>Wise&rsquo;s organic design theme and human-centred imagery does a great job at making a digital product feel organic.</p>
+      </div>
+      <div class="card">
+        <div class="n">3</div>
+        <h4>Amplifying text with visual design</h4>
+        <p>Wise&rsquo;s distinct visual design elevates the TOV and gives it a personality that creates a memorable brand, rather than just a good experience.</p>
+      </div>
+    </div>
+
+    <h3>Applied to Koinly</h3>
+
+    <div class="applied">
+      <div class="applied-h">Write as though we are working side-by-side with the user</div>
+      <div class="applied-b">
+        <ul class="dots">
+          <li>First-person, active voice, collective &ldquo;we&rdquo;.</li>
+          <li>Make doing your taxes feel more approachable, like there&rsquo;s someone there doing it with you and helping you along the way.</li>
+        </ul>
+        <p>I think this is an elegant way of empathising with our users, and proactively mitigating the inherent stress that comes with doing your crypto taxes.</p>
+      </div>
+    </div>
+
+    <div class="applied">
+      <div class="applied-h">Reassure and guide users throughout</div>
+      <div class="applied-b">
+        <p>Reassure users by helping them feel connected and informed throughout the process, rather than feeling like a clueless outsider looking over the shoulder of their accountant.</p>
+      </div>
+    </div>
+
+    <div class="applied">
+      <div class="applied-h">Reduce jargon, explain tax concepts, don&rsquo;t assume knowledge</div>
+      <div class="applied-b">
+        <ul class="dots">
+          <li>Reduce jargon to improve clarity, and the percentage of actions users complete successfully.</li>
+          <li>Most countries do not teach their citizens how their tax system works &ndash; we should never assume they know what we&rsquo;re talking about when discussing tax concepts.</li>
+          <li>Do not assume a user knows every crypto topic either, like how to read a blockchain. Explain using tooltips, internal linking, and brief copy where possible.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="applied">
+      <div class="applied-h">Use UX and proactive messaging to prime the reader on next steps</div>
+      <div class="applied-b">
+        <ul class="dots">
+          <li>Loading screens and brief pauses in the process, to help prime the reader and explain the next steps.</li>
+          <li>Pre-empt blockers, preventing confusion and the user needing to look for information later.</li>
+          <li>Reduce the emotional intensity of the task by ensuring in-app messaging and UI helps guide them to their goal, and minimises frustration when blockers are encountered.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="applied">
+      <div class="applied-h">Amplify text-based messaging with distinct visual design</div>
+      <div class="applied-b">
+        <p>Use visual assets to reinforce written copy, and convey feelings of reliability, calm and assistance.</p>
+      </div>
+    </div>
+
+    <div class="pull">
+      <p>&ldquo;There are moments when I &mdash; an experienced user &mdash; am using crypto tax software, and I still feel like a clueless outsider looking over the shoulder of my accountant.&rdquo;</p>
+      <cite>I wanted to keep this in mind as the kind of user we&rsquo;re trying to help, when drafting these TOV guidelines.</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<section id="tov">
+  <div class="container narrow">
+    <div class="sec-num">06</div>
+    <h2>The Koinly tone of voice</h2>
+
+    <div class="principles">
+      <div class="principle">
+        <div class="pn">1</div>
+        <div>
+          <h4>Two modes, one voice</h4>
+          <p>We differentiate ourselves by leading with empathy and colour in our public-facing communications. In the app, we&rsquo;re prescriptive and concise.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="pn">2</div>
+        <div>
+          <h4>Plain language, accessible to everyone</h4>
+          <p>We recognise that crypto attracts a broad range of people, so we make sure our language is simple and easy to understand. We pride ourselves on avoiding jargon and taking the time to explain important tax and cryptocurrency concepts.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="pn">3</div>
+        <div>
+          <h4>Calm and approachable, rather than light-hearted</h4>
+          <p>We can&rsquo;t make tax fun, but we can make it less of a headache. We walk side-by-side with our readers, ensuring they feel supported at every step of the journey.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="pn">4</div>
+        <div>
+          <h4>Proactive, not reactive</h4>
+          <p>We give people the information they need before they have to go looking for it. We empower them to solve any problems themselves, and remind them that help is available when they&rsquo;re likely to need it most.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="pn">5</div>
+        <div>
+          <h4>Truthful and upfront, while being reassuring</h4>
+          <p>We acknowledge the limitations of our software, or when something might be difficult. When they encounter an issue, we clearly tell them what&rsquo;s wrong, what it affects, and how to fix it.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="pn">6</div>
+        <div>
+          <h4>Tone shifts as the stakes rise</h4>
+          <p>Our tone becomes more prescriptive and concise as the need for precision increases.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="pn">7</div>
+        <div>
+          <h4>No hyperbole</h4>
+          <p>We don&rsquo;t oversell, and we never promise an outcome we can&rsquo;t stand behind. Our product, precision and reliability do the talking for us. We write with compliance in mind at all times.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">Koinly tone of voice practical task &middot; Section 1 &middot; James Edwards</div>
+</footer>
+
+</body>
+</html>
