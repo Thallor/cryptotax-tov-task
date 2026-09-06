@@ -38,16 +38,14 @@ ul{margin:0 0 16px;padding:0;list-style:none}
   letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:22px}
 .masthead h1{font-size:50px;font-weight:800;margin-bottom:18px;max-width:16em}
 .masthead .standfirst{font-size:20px;color:var(--body);max-width:44em}
-.byline{margin-top:30px;padding-top:22px;border-top:1px solid var(--gray-200);
-  display:flex;gap:28px;flex-wrap:wrap;font-size:14.5px;color:var(--muted)}
-.byline b{color:var(--ink);font-weight:650}
 
 /* ---------- toc ---------- */
 .toc{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--gray-200)}
-.toc-in{display:flex;gap:6px;overflow-x:auto;padding:11px 24px;max-width:var(--xl);margin:0 auto}
+.toc-in{display:flex;gap:6px;overflow-x:auto;padding:11px 24px;max-width:780px;margin:0 auto}
 .toc a{white-space:nowrap;font-size:14.5px;font-weight:550;color:var(--muted);padding:7px 13px;border-radius:7px}
 .toc a:hover{background:var(--gray-100);color:var(--ink)}
+.toc a:first-child{margin-left:-13px}
 
 /* ---------- sections ---------- */
 section{padding:64px 0;border-bottom:1px solid var(--gray-200)}
@@ -136,15 +134,10 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
 <body>
 
 <header class="masthead">
-  <div class="container">
+  <div class="container narrow">
     <span class="eyebrow">Practical task &middot; Section 1</span>
     <h1>Building a tone of voice for Koinly, using Wise as a reference</h1>
     <p class="standfirst">The following page is intended to take you through my thought process, and how I approached merging Wise&rsquo;s tone of voice with Koinly&rsquo;s.</p>
-    <div class="byline">
-      <span><b>James Edwards</b></span>
-      <span>Explain your TOV approach</span>
-      <span>Koinly &middot; Content Lead</span>
-    </div>
   </div>
 </header>
 
@@ -206,7 +199,7 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
     <p>Many of the visual assets used by Wise aren&rsquo;t illustrations, b-roll or product shots &mdash; instead they are simply images of hero text. And where additional assets are used, they are typically:</p>
     <ul class="dots">
       <li><b>Minimalist illustrations</b> that amplify the message in the text.</li>
-      <li><b>Candid photography of real people</b>, that makes the digital product feel organic, warm and tangible.</li>
+      <li><b>Candid photography of real people</b>, which makes the digital product feel organic, warm and tangible.</li>
     </ul>
 
     <p>This helps amplify the written copy and provides a number of other benefits:</p>
@@ -275,12 +268,12 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
         </tr>
         <tr>
           <td>The stakes</td>
-          <td>Relatively low. It&rsquo;s unlikely users are scrutinising every transaction &mdash; if the name of the point-of-sale doesn&rsquo;t exactly match what they were thinking, they&rsquo;re unlikely to follow up on it.</td>
+          <td>Relatively low. It&rsquo;s unlikely users are scrutinising every transaction &mdash; if the name of the point-of-sale doesn&rsquo;t exactly match what they were thinking, they probably won&rsquo;t follow up on it.</td>
           <td>High. A single, relatively minor-looking discrepancy in one transaction from several years ago can render an entire 10,000-transaction report invalid.</td>
         </tr>
         <tr>
           <td>The user</td>
-          <td>A large part of Wise&rsquo;s users are holidaymakers, primed to interact with more &ldquo;bold, energetic and full of life&rdquo; messaging than they might be with other financial products.</td>
+          <td>A large proportion of Wise&rsquo;s users are holidaymakers, primed to interact with more &ldquo;bold, energetic and full of life&rdquo; messaging than they might be with other financial products.</td>
           <td>Users typically have to scrutinise transactions and find missing data sources, which can involve manually combing through the blockchain or exchange records.</td>
         </tr>
       </tbody>
@@ -323,7 +316,7 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
       <div class="card">
         <div class="n">2</div>
         <h4>Humanising a digital product</h4>
-        <p>Wise&rsquo;s organic design theme and human-centred imagery does a great job at making a digital product feel organic.</p>
+        <p>Wise&rsquo;s organic design theme and human-centred imagery do a great job at making a digital product feel organic.</p>
       </div>
       <div class="card">
         <div class="n">3</div>

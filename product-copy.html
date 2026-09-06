@@ -33,16 +33,13 @@ ul{margin:0 0 16px;padding:0;list-style:none}
   letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:22px}
 .masthead h1{font-size:48px;font-weight:800;margin-bottom:18px}
 .standfirst{font-size:19px;color:var(--body);max-width:44em;font-style:italic}
-.byline{margin-top:30px;padding-top:22px;border-top:1px solid var(--gray-200);
-  display:flex;gap:28px;flex-wrap:wrap;font-size:14.5px;color:var(--muted)}
-.byline b{color:var(--ink);font-weight:650}
 
 .keybox{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:12px;
   padding:22px 26px;margin:36px 0 8px}
-.keybox li{display:flex;gap:12px;margin-bottom:11px;font-size:16px}
+.keybox li{display:grid;grid-template-columns:140px 1fr;gap:14px;margin-bottom:11px;font-size:16px}
 .keybox li:last-child{margin-bottom:0}
-.tag{flex:0 0 auto;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
-  padding:3px 10px;border-radius:999px;margin-top:3px;height:fit-content}
+.tag{justify-self:start;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 10px;border-radius:999px;margin-top:3px;height:fit-content;white-space:nowrap}
 .tag.v{background:var(--green-50);color:var(--green-600)}
 .tag.h{background:#FFFBEB;color:#B45309}
 
@@ -94,11 +91,6 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
     <span class="eyebrow">Practical task &middot; Section C</span>
     <h1>Product copy</h1>
     <p class="standfirst">To rewrite these properly, I felt it was necessary to find the original context in which they appear. So I had Claude crawl the Koinly help centre to provide context on each. If no context was confirmed, it chose a hypothetical scenario.</p>
-    <div class="byline">
-      <span><b>James Edwards</b></span>
-      <span>Apply the TOV &middot; C. Product copy</span>
-      <span>Koinly &middot; Content Lead</span>
-    </div>
   </div>
 </header>
 
@@ -182,7 +174,7 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
       <div class="msg-body">
         <div class="ctx"><span class="lbl">Context &middot; Hypothetical</span>The &ldquo;why did this happen?&rdquo; detail under a failed wallet on the Wallets page.</div>
         <div class="rw"><span class="lbl">Rewrite</span>
-          <p>Sometimes a connection fails when an exchange is slow to respond. It should fix itself on your next attempt.</p>
+          <p>Sometimes a connection fails when an exchange is slow to respond. It usually clears when you try again.</p>
         </div>
         <div class="why"><span class="lbl">Why</span>Reassure the reader by explaining to them what happened, demonstrating it&rsquo;s not a big deal.</div>
       </div>
@@ -209,7 +201,7 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
       <div class="msg-body">
         <div class="ctx"><span class="lbl">Context &middot; Verified</span>The completion popup after a resync &mdash; Koinly shows an <em>&ldquo;Updating&rdquo;</em> indicator top-right while it processes, then notifies when it finishes.</div>
         <div class="rw"><span class="lbl">Rewrite</span>
-          <p>Coinbase is connected again. We&rsquo;ve imported 1,284 new Coinbase transactions. Check your balances match before you generate a report.</p>
+          <p>Coinbase is connected again. We&rsquo;ve imported 1,284 new transactions. Check your balances match before you generate a report.</p>
         </div>
         <div class="why"><span class="lbl">Why</span>Names the exact issue resolved, and gives a brief summary of what was achieved. Recommends next step.</div>
       </div>
@@ -260,7 +252,7 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
       <div class="msg-body">
         <div class="ctx"><span class="lbl">Context &middot; Hypothetical</span>Field-level validation in manual transaction or custom price entry.</div>
         <div class="rw"><span class="lbl">Rewrite</span>
-          <p>Your latest transaction contains an error. Please check the data in the highlighted field is correct.</p>
+          <p>Your latest transaction contains an error. Please check that the data in the highlighted field is correct.</p>
         </div>
         <div class="why"><span class="lbl">Why</span>Provides specificity and next steps.</div>
       </div>
