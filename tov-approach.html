@@ -42,12 +42,11 @@ ul{margin:0 0 16px;padding:0;list-style:none}
 /* ---------- toc ---------- */
 .toc{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--gray-200)}
-.toc-in{display:flex;flex-wrap:wrap;gap:6px;padding:11px 24px;max-width:780px;margin:0 auto}
+.toc-in{display:flex;gap:6px;overflow-x:auto;padding:11px 24px;max-width:780px;margin:0 auto}
 .toc a{white-space:nowrap;font-size:14.5px;font-weight:550;color:var(--muted);padding:7px 13px;border-radius:7px}
 .toc a:hover{background:var(--gray-100);color:var(--ink)}
 .toc a:first-child{margin-left:-13px}
-.toc-br{flex-basis:100%;height:0}
-.toc-br + a{margin-left:-13px}
+.toc-in + .toc-in{padding-top:0}
 
 /* ---------- sections ---------- */
 section{padding:64px 0;border-bottom:1px solid var(--gray-200)}
@@ -150,7 +149,8 @@ footer{background:var(--gray-50);border-top:1px solid var(--gray-200);padding:40
     <a href="#inapp">In-app voice</a>
     <a href="#change">What changes for Koinly</a>
     <a href="#take">What we take from Wise</a>
-    <span class="toc-br"></span>
+  </div>
+  <div class="toc-in">
     <a href="#tov">Koinly&rsquo;s new TOV</a>
   </div>
 </nav>
